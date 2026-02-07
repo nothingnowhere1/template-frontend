@@ -2,22 +2,22 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { PasswordTextFieldProps } from '@/components/inputs/PasswordTextField';
-import { PasswordTextField } from '@/components/inputs/PasswordTextField';
+import type { TextFieldProps } from '@/shared/components/inputs/TextField.tsx';
+import { TextField } from '@/shared/components/inputs/TextField.tsx';
 
-export type ControlledPasswordTextFieldProps<T extends FieldValues> = {
+export type ControlledInputProps<T extends FieldValues> = {
     control: Control<T>;
     name: FieldPath<T>;
-} & PasswordTextFieldProps;
+} & TextFieldProps;
 
-export function ControlledPasswordTextField<T extends FieldValues>({
+export function ControlledInput<T extends FieldValues>({
     name,
     defaultValue,
     control,
     onBlur,
     onChange,
     ...props
-}: ControlledPasswordTextFieldProps<T>) {
+}: ControlledInputProps<T>) {
     return (
         <Controller
             control={control}
@@ -29,18 +29,18 @@ export function ControlledPasswordTextField<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState,
+                fieldState
             }) => (
-                <PasswordTextField
+                <TextField
                     {...fieldState}
                     {...props}
                     {...field}
-                    onChange={(event) => {
-                        onChange?.(event);
-                        fieldOnChange(event);
+                    onChange={(e) => {
+                        onChange?.(e);
+                        fieldOnChange(e);
                     }}
-                    onBlur={(event) => {
-                        onBlur?.(event);
+                    onBlur={(e) => {
+                        onBlur?.(e);
                         fieldOnBlur();
                     }}
                 />
@@ -49,6 +49,6 @@ export function ControlledPasswordTextField<T extends FieldValues>({
     );
 }
 
-export default memo(ControlledPasswordTextField) as <T extends FieldValues>(
-    props: ControlledPasswordTextFieldProps<T>
+export default memo(ControlledInput) as <T extends FieldValues>(
+    props: ControlledInputProps<T>
 ) => React.JSX.Element;

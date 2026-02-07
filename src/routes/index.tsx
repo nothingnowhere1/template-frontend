@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-
-import { FormExample } from '@/components';
+import { FormExample } from 'src/shared/components';
 
 export const Route = createFileRoute('/')({ component: App });
 

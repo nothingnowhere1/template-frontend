@@ -2,22 +2,22 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { TextFieldProps } from '@/components/inputs/TextField.tsx';
-import { TextField } from '@/components/inputs/TextField.tsx';
+import type { NumberTextFieldProps } from '@/shared/components/inputs/NumberTextField.tsx';
+import { NumberTextField } from '@/shared/components/inputs/NumberTextField.tsx';
 
-export type ControlledInputProps<T extends FieldValues> = {
+export type ControlledNumberTextFieldProps<T extends FieldValues> = {
     control: Control<T>;
     name: FieldPath<T>;
-} & TextFieldProps;
+} & NumberTextFieldProps;
 
-export function ControlledInput<T extends FieldValues>({
+export function ControlledNumberTextField<T extends FieldValues>({
     name,
     defaultValue,
     control,
     onBlur,
     onChange,
     ...props
-}: ControlledInputProps<T>) {
+}: ControlledNumberTextFieldProps<T>) {
     return (
         <Controller
             control={control}
@@ -29,18 +29,18 @@ export function ControlledInput<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState
+                fieldState,
             }) => (
-                <TextField
+                <NumberTextField
                     {...fieldState}
                     {...props}
                     {...field}
-                    onChange={(e) => {
-                        onChange?.(e);
-                        fieldOnChange(e);
+                    onChange={(event) => {
+                        onChange?.(event);
+                        fieldOnChange(event);
                     }}
-                    onBlur={(e) => {
-                        onBlur?.(e);
+                    onBlur={(event) => {
+                        onBlur?.(event);
                         fieldOnBlur();
                     }}
                 />
@@ -49,6 +49,6 @@ export function ControlledInput<T extends FieldValues>({
     );
 }
 
-export default memo(ControlledInput) as <T extends FieldValues>(
-    props: ControlledInputProps<T>
+export default memo(ControlledNumberTextField) as <T extends FieldValues>(
+    props: ControlledNumberTextFieldProps<T>
 ) => React.JSX.Element;

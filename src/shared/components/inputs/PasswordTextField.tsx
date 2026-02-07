@@ -2,7 +2,7 @@ import { useId, useState } from 'react';
 import type { FieldError as TypeFieldError } from 'react-hook-form';
 import { Eye, EyeOff } from 'lucide-react';
 
-import type { InputProps } from '@/components';
+import type { InputProps } from '@/shared/components';
 import {
     Button,
     Field,
@@ -10,8 +10,8 @@ import {
     FieldError,
     FieldLabel,
     Input,
-} from '@/components';
-import { cn } from '@/lib/utils';
+} from '@/shared/components';
+import { cn } from '@/shared/lib/utils.ts';
 
 export type PasswordTextFieldProps = {
     label?: string;
@@ -52,7 +52,7 @@ export function PasswordTextField({
                     className="absolute right-1 top-1/2 -translate-y-1/2"
                     onClick={() => setVisible((value) => !value)}
                 >
-                    {visible ? <EyeOff /> : <Eye />}
+                    {visible ? <EyeOff/> : <Eye/>}
                 </Button>
             </div>
             {!!description && !error && (

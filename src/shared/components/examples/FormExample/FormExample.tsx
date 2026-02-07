@@ -1,5 +1,5 @@
-import { Button, ControlledInput } from '@/components';
-import { useFormExample } from '@/components/examples/FormExample/useFormExample.ts';
+import { Button, ControlledInput } from '@/shared/components';
+import { useFormExample } from '@/shared/components/examples/FormExample/useFormExample.ts';
 
 export function FormExample() {
     const { control, onSubmit } = useFormExample();

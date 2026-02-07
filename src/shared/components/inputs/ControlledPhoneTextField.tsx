@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { PhoneTextFieldProps } from '@/components/inputs/PhoneTextField';
-import { PhoneTextField } from '@/components/inputs/PhoneTextField';
+import type { PhoneTextFieldProps } from '@/shared/components/inputs/PhoneTextField.tsx';
+import { PhoneTextField } from '@/shared/components/inputs/PhoneTextField.tsx';
 
 export type ControlledPhoneTextFieldProps<T extends FieldValues> = {
     control: Control<T>;

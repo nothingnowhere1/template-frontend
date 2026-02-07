@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import type { FieldError as TypeFieldError } from 'react-hook-form';
 
-import type { InputProps } from '@/components';
-import { Field, FieldDescription, FieldError, FieldLabel, Input } from '@/components';
+import type { InputProps } from '@/shared/components';
+import { Field, FieldDescription, FieldError, FieldLabel, Input } from '@/shared/components';
 
 export type TextFieldProps = {
     label?: string;

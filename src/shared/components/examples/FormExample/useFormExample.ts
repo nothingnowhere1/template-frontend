@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { phoneSchema } from '@/schemas';
+import { phoneSchema } from '@/shared/schemas';
 
 const zodSchema = z.object({
     name: z.string().min(3, { message: 'Минимальное количество символов 3' }).max(50, { message: 'Максимальное количество символов 50' }),

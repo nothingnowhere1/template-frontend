@@ -1,5 +1,5 @@
-import type { TextFieldProps } from '@/components/inputs/TextField';
-import { TextField } from '@/components/inputs/TextField';
+import type { TextFieldProps } from '@/shared/components/inputs/TextField.tsx';
+import { TextField } from '@/shared/components/inputs/TextField.tsx';
 
 export type PhoneTextFieldProps = TextFieldProps;
 
