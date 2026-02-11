@@ -3,14 +3,7 @@ import type { FieldError as TypeFieldError } from 'react-hook-form';
 import { Eye, EyeOff } from 'lucide-react';
 
 import type { InputProps } from '@/shared/components';
-import {
-    Button,
-    Field,
-    FieldDescription,
-    FieldError,
-    FieldLabel,
-    Input,
-} from '@/shared/components';
+import { Button, Field, FieldDescription, FieldError, FieldLabel, Input, } from '@/shared/components';
 import { cn } from '@/shared/lib/utils.ts';
 
 export type PasswordTextFieldProps = {

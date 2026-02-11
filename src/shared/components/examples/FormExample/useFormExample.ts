@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { phoneSchema } from '@/shared/schemas';
+import { numberMinMaxSchema, phoneSchema, stringMinMaxSchema } from '@/shared/schemas';
 
 const zodSchema = z.object({
-    name: z.string().min(3, { message: 'Минимальное количество символов 3' }).max(50, { message: 'Максимальное количество символов 50' }),
-    tel: phoneSchema
+    name: stringMinMaxSchema({ min: 3, max: 255, nullable: true }),
+    tel: phoneSchema,
+    number: numberMinMaxSchema({ min: 1, max: 10, nullable: true }),
+    password: stringMinMaxSchema({ min: 3, max: 255, nullable: true })
 });
 
 type zodSchemaType = z.infer<typeof zodSchema>;

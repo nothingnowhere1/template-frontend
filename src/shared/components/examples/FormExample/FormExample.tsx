@@ -1,4 +1,10 @@
-import { Button, ControlledInput } from '@/shared/components';
+import {
+    Button,
+    ControlledInput,
+    ControlledNumberTextField,
+    ControlledPasswordTextField,
+    ControlledPhoneTextField
+} from '@/shared/components';
 import { useFormExample } from '@/shared/components/examples/FormExample/useFormExample.ts';
 
 export function FormExample() {
@@ -14,6 +20,21 @@ export function FormExample() {
                 label="Имя"
                 control={control}
                 name="name"
+            />
+            <ControlledNumberTextField
+                label="Номер"
+                control={control}
+                name="number"
+            />
+            <ControlledPhoneTextField
+                label="Телефон"
+                control={control}
+                name="tel"
+            />
+            <ControlledPasswordTextField
+                label="Пароль"
+                control={control}
+                name="password"
             />
             <Button
                 variant="outline"
