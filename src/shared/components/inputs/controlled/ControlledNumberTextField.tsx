@@ -2,22 +2,22 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { PhoneTextFieldProps } from '@/shared/components/inputs/PhoneTextField.tsx';
-import { PhoneTextField } from '@/shared/components/inputs/PhoneTextField.tsx';
+import type { NumberTextFieldProps } from '@/shared/components/inputs/base';
+import { NumberTextField } from '@/shared/components/inputs/base';
 
-export type ControlledPhoneTextFieldProps<T extends FieldValues> = {
+export type ControlledNumberTextFieldProps<T extends FieldValues> = {
     control: Control<T>;
     name: FieldPath<T>;
-} & PhoneTextFieldProps;
+} & NumberTextFieldProps;
 
-export function ControlledPhoneTextField<T extends FieldValues>({
+export function ControlledNumberTextField<T extends FieldValues>({
     name,
     defaultValue,
     control,
     onBlur,
     onChange,
     ...props
-}: ControlledPhoneTextFieldProps<T>) {
+}: ControlledNumberTextFieldProps<T>) {
     return (
         <Controller
             control={control}
@@ -31,7 +31,7 @@ export function ControlledPhoneTextField<T extends FieldValues>({
                 },
                 fieldState,
             }) => (
-                <PhoneTextField
+                <NumberTextField
                     {...fieldState}
                     {...props}
                     {...field}
@@ -49,6 +49,6 @@ export function ControlledPhoneTextField<T extends FieldValues>({
     );
 }
 
-export default memo(ControlledPhoneTextField) as <T extends FieldValues>(
-    props: ControlledPhoneTextFieldProps<T>
+export default memo(ControlledNumberTextField) as <T extends FieldValues>(
+    props: ControlledNumberTextFieldProps<T>
 ) => React.JSX.Element;

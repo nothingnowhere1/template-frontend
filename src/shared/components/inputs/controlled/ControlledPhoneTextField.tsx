@@ -2,22 +2,22 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { PasswordTextFieldProps } from '@/shared/components/inputs/PasswordTextField.tsx';
-import { PasswordTextField } from '@/shared/components/inputs/PasswordTextField.tsx';
+import type { PhoneTextFieldProps } from '@/shared/components/inputs/base';
+import { PhoneTextField } from '@/shared/components/inputs/base';
 
-export type ControlledPasswordTextFieldProps<T extends FieldValues> = {
+export type ControlledPhoneTextFieldProps<T extends FieldValues> = {
     control: Control<T>;
     name: FieldPath<T>;
-} & PasswordTextFieldProps;
+} & PhoneTextFieldProps;
 
-export function ControlledPasswordTextField<T extends FieldValues>({
+export function ControlledPhoneTextField<T extends FieldValues>({
     name,
     defaultValue,
     control,
     onBlur,
     onChange,
     ...props
-}: ControlledPasswordTextFieldProps<T>) {
+}: ControlledPhoneTextFieldProps<T>) {
     return (
         <Controller
             control={control}
@@ -31,7 +31,7 @@ export function ControlledPasswordTextField<T extends FieldValues>({
                 },
                 fieldState,
             }) => (
-                <PasswordTextField
+                <PhoneTextField
                     {...fieldState}
                     {...props}
                     {...field}
@@ -49,6 +49,6 @@ export function ControlledPasswordTextField<T extends FieldValues>({
     );
 }
 
-export default memo(ControlledPasswordTextField) as <T extends FieldValues>(
-    props: ControlledPasswordTextFieldProps<T>
+export default memo(ControlledPhoneTextField) as <T extends FieldValues>(
+    props: ControlledPhoneTextFieldProps<T>
 ) => React.JSX.Element;

@@ -1,11 +1,12 @@
+import { useFormExample } from './useFormExample';
+
 import {
     Button,
-    ControlledInput,
     ControlledNumberTextField,
     ControlledPasswordTextField,
-    ControlledPhoneTextField
+    ControlledPhoneTextField,
+    ControlledTextField
 } from '@/shared/components';
-import { useFormExample } from '@/shared/components/examples/FormExample/useFormExample.ts';
 
 export function FormExample() {
     const { control, onSubmit } = useFormExample();
@@ -16,7 +17,7 @@ export function FormExample() {
             onSubmit={onSubmit}
         >
             <h3>Form Example</h3>
-            <ControlledInput
+            <ControlledTextField
                 label="Имя"
                 control={control}
                 name="name"

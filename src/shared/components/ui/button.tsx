@@ -3,7 +3,7 @@ import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
 
-import { cn } from '@/shared/lib/utils.ts';
+import { cn } from '@/shared/lib/utils';
 
 export type ButtonProps = {
     asChild?: boolean

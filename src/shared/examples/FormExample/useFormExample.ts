@@ -6,10 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { numberMinMaxSchema, phoneSchema, stringMinMaxSchema } from '@/shared/schemas';
 
 const zodSchema = z.object({
-    name: stringMinMaxSchema({ min: 3, max: 255, nullable: true }),
+    name: stringMinMaxSchema({ min: 3, max: 255 }),
     tel: phoneSchema,
     number: numberMinMaxSchema({ min: 1, max: 10, nullable: true }),
-    password: stringMinMaxSchema({ min: 3, max: 255, nullable: true })
+    password: stringMinMaxSchema({ min: 3, max: 255 })
 });
 
 type zodSchemaType = z.infer<typeof zodSchema>;

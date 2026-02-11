@@ -1,1 +1,1 @@
-export * from './phone.ts';
+export * from './phone';

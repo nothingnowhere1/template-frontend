@@ -2,15 +2,15 @@ import React, { memo } from 'react';
 import type { Control, FieldPath, FieldValues, Path, PathValue } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-import type { TextFieldProps } from '@/shared/components/inputs/TextField.tsx';
-import { TextField } from '@/shared/components/inputs/TextField.tsx';
+import type { TextFieldProps } from '@/shared/components/inputs/base';
+import { TextField } from '@/shared/components/inputs/base';
 
 export type ControlledInputProps<T extends FieldValues> = {
     control: Control<T>;
     name: FieldPath<T>;
 } & TextFieldProps;
 
-export function ControlledInput<T extends FieldValues>({
+export function ControlledTextField<T extends FieldValues>({
     name,
     defaultValue,
     control,
@@ -49,6 +49,6 @@ export function ControlledInput<T extends FieldValues>({
     );
 }
 
-export default memo(ControlledInput) as <T extends FieldValues>(
+export default memo(ControlledTextField) as <T extends FieldValues>(
     props: ControlledInputProps<T>
 ) => React.JSX.Element;
