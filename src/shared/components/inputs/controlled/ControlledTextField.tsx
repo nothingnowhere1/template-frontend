@@ -29,12 +29,12 @@ export function ControlledTextField<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState
+                fieldState: { error }
             }) => (
                 <TextField
-                    {...fieldState}
                     {...props}
                     {...field}
+                    error={error}
                     onChange={(e) => {
                         onChange?.(e);
                         fieldOnChange(e);

@@ -29,12 +29,12 @@ export function ControlledPasswordTextField<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState,
+                fieldState: { error },
             }) => (
                 <PasswordTextField
-                    {...fieldState}
                     {...props}
                     {...field}
+                    error={error}
                     onChange={(event) => {
                         onChange?.(event);
                         fieldOnChange(event);

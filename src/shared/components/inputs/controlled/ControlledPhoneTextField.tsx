@@ -29,12 +29,12 @@ export function ControlledPhoneTextField<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState,
+                fieldState: { error },
             }) => (
                 <PhoneTextField
-                    {...fieldState}
                     {...props}
                     {...field}
+                    error={error}
                     onChange={(event) => {
                         onChange?.(event);
                         fieldOnChange(event);

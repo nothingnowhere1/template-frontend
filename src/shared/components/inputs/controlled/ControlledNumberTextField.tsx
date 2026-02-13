@@ -29,12 +29,12 @@ export function ControlledNumberTextField<T extends FieldValues>({
                     onBlur: fieldOnBlur,
                     ...field
                 },
-                fieldState,
+                fieldState: { error },
             }) => (
                 <NumberTextField
-                    {...fieldState}
                     {...props}
                     {...field}
+                    error={error}
                     onChange={(event) => {
                         onChange?.(event);
                         fieldOnChange(event);
