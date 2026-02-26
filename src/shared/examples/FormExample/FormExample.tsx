@@ -39,10 +39,8 @@ export function FormExample() {
                 name="password"
             />
             <Dropzone
-                valueType="base64"
                 maxFiles={3}
                 onChange={(file) => console.log(file)}
-                renderFile={(file, removeFile) => <div onClick={() => removeFile()}>{file.name}</div>}
             />
             <Button
                 variant="outline"

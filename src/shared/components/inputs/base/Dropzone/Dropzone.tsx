@@ -1,20 +1,17 @@
 import { useId } from 'react';
 
 import { useDropzoneField } from './useDropzoneField';
-import type { DropzoneProps, DropzoneValueType, } from './types';
+import type { DropzoneProps } from './types';
 
 import { Field, FieldDescription, FieldError, FieldLabel } from '@/shared/components/ui';
 import { cn } from '@/shared/lib/utils';
-import { FilePreviewZone } from '@/shared/components/inputs/base/Dropzone/FilePreviewZone';
 
 export type {
     DropzoneOutputValue,
     DropzoneProps,
-    DropzoneValueType,
 } from './types';
 
 export function Dropzone<
-    TValueType extends DropzoneValueType,
     TMaxFiles extends number | undefined,
 >({
     label,
@@ -27,10 +24,8 @@ export function Dropzone<
     idleText = 'Перетащите файлы сюда или нажмите, чтобы выбрать',
     activeText = 'Отпустите файлы для загрузки',
     rejectText = 'Некоторые файлы не подходят под ограничения',
-    showFiles = true,
-    renderFile,
     ...dropzoneProps
-}: DropzoneProps<TValueType, TMaxFiles>) {
+}: DropzoneProps<TMaxFiles>) {
     const generatedId = useId();
     const id = inputId ?? generatedId;
 
@@ -39,10 +34,7 @@ export function Dropzone<
         getInputProps,
         isDragActive,
         isDragReject,
-        filePreviews,
-        removeFile,
-        maxFilesError,
-    } = useDropzoneField<TValueType, TMaxFiles>(dropzoneProps);
+    } = useDropzoneField<TMaxFiles>(dropzoneProps);
 
     const message = isDragReject
         ? rejectText
@@ -81,14 +73,7 @@ export function Dropzone<
                 </FieldDescription>
             )}
 
-            <FieldError errors={[error, maxFilesError ? { message: maxFilesError } : undefined]}/>
-
-            <FilePreviewZone
-                removeFile={removeFile}
-                renderFile={renderFile}
-                filePreviews={filePreviews}
-                showFiles={showFiles}
-            />
+            <FieldError errors={[error]}/>
         </Field>
     );
 }

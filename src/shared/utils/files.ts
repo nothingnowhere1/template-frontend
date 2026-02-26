@@ -1,4 +1,11 @@
-export const base64ToFile = (content: string, index: number): File | null => {
+export const generateId = () => {
+    if (typeof crypto === 'undefined' || typeof crypto.randomUUID !== 'function') {
+        return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+    return crypto.randomUUID();
+};
+
+export const base64ToFile = (content: string): File | null => {
     if (!content) {
         return null;
     }
@@ -6,7 +13,7 @@ export const base64ToFile = (content: string, index: number): File | null => {
     const dataUrlMatch = content.match(/^data:([^;,]+)(?:;name=([^;]+))?;base64,(.+)$/);
     const mimeType = dataUrlMatch?.[1] ?? 'application/octet-stream';
     const encodedFileName = dataUrlMatch?.[2];
-    let fileName = `file-${index + 1}`;
+    let fileName: string;
 
     if (encodedFileName) {
         try {
@@ -14,6 +21,8 @@ export const base64ToFile = (content: string, index: number): File | null => {
         } catch {
             fileName = encodedFileName;
         }
+    } else {
+        fileName = `file-${generateId()}`;
     }
     const base64Data = dataUrlMatch?.[3] ?? content;
 
