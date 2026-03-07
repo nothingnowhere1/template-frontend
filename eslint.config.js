@@ -78,6 +78,7 @@ export default [
                     unnamedComponents: 'function-expression'
                 }
             ],
+            'no-shadow': 'off',
             // 'react/jsx-one-expression-per-line': ['error'],
             'react/jsx-wrap-multilines': [
                 'error',

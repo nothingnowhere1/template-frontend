@@ -8,6 +8,7 @@ import {
     ControlledTextField,
     Dropzone
 } from '@/shared/components';
+import { ControlledDatePicker } from '@/shared/components/inputs/controlled/ControlledDatePicker';
 
 export function FormExample() {
     const { control, onSubmit } = useFormExample();
@@ -41,6 +42,11 @@ export function FormExample() {
             <Dropzone
                 maxFiles={3}
                 onChange={(file) => console.log(file)}
+            />
+            <ControlledDatePicker
+                control={control}
+                name="date"
+                mode="range"
             />
             <Button
                 variant="outline"
