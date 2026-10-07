@@ -4,4 +4,5 @@ export * from './ControlledPasswordTextField';
 export * from './ControlledTextField';
 export * from './ControlledTextareaField';
 export * from './ControlledSelectField';
+export * from './ControlledCheckboxField';
 export * from './ControlledDateTimePicker';

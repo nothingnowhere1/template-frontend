@@ -1,6 +1,7 @@
 export * from './TextField';
 export * from './TextareaField';
 export * from './SelectField';
+export * from './CheckboxField';
 export * from './PasswordTextField';
 export * from './PhoneTextField';
 export * from './NumberTextField';

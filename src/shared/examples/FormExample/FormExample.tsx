@@ -2,6 +2,7 @@ import { useFormExample } from './useFormExample';
 
 import {
     Button,
+    ControlledCheckboxField,
     ControlledDateTimePicker,
     ControlledNumberTextField,
     ControlledPasswordTextField,
@@ -45,6 +46,13 @@ export function FormExample() {
                     { value: 'manager', label: 'Менеджер' },
                     { value: 'admin', label: 'Администратор' },
                 ]}
+            />
+            <ControlledCheckboxField
+                label="Включить уведомления"
+                description="Настройку можно изменить в любое время"
+                control={control}
+                name="notificationsEnabled"
+                defaultValue={false}
             />
             <ControlledNumberTextField
                 label="Номер"

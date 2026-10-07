@@ -9,6 +9,7 @@ const zodSchema = z.object({
     name: stringMinMaxSchema({ min: 3, max: 255 }),
     bio: stringMinMaxSchema({ min: 10, max: 1000 }),
     role: z.enum(['user', 'manager', 'admin']),
+    notificationsEnabled: z.boolean(),
     tel: phoneSchema,
     number: numberMinMaxSchema({ min: 1, max: 10, nullable: true }),
     password: stringMinMaxSchema({ min: 3, max: 255 }),
