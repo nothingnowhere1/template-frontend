@@ -14,6 +14,7 @@ const zodSchema = z.object({
         to: z.date(),
         from: z.date(),
     }),
+    dateTime: z.date(),
 });
 
 type zodSchemaType = z.infer<typeof zodSchema>;

@@ -2,6 +2,7 @@ import { useFormExample } from './useFormExample';
 
 import {
     Button,
+    ControlledDateTimePicker,
     ControlledNumberTextField,
     ControlledPasswordTextField,
     ControlledPhoneTextField,
@@ -47,6 +48,12 @@ export function FormExample() {
                 control={control}
                 name="date"
                 mode="range"
+            />
+            <ControlledDateTimePicker
+                control={control}
+                name="dateTime"
+                timeZone="Asia/Yekaterinburg"
+                description="Дата и время в часовом поясе Екатеринбурга"
             />
             <Button
                 variant="outline"
