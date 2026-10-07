@@ -9,38 +9,75 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SidebarRouteImport } from './routes/_sidebar'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SidebarSettingsRouteImport } from './routes/_sidebar/settings'
+import { Route as SidebarProfileRouteImport } from './routes/_sidebar/profile'
 
+const SidebarRoute = SidebarRouteImport.update({
+  id: '/_sidebar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SidebarSettingsRoute = SidebarSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => SidebarRoute,
+} as any)
+const SidebarProfileRoute = SidebarProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => SidebarRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/profile': typeof SidebarProfileRoute
+  '/settings': typeof SidebarSettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile': typeof SidebarProfileRoute
+  '/settings': typeof SidebarSettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_sidebar': typeof SidebarRouteWithChildren
+  '/_sidebar/profile': typeof SidebarProfileRoute
+  '/_sidebar/settings': typeof SidebarSettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/profile' | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/profile' | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/_sidebar'
+    | '/_sidebar/profile'
+    | '/_sidebar/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SidebarRoute: typeof SidebarRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_sidebar': {
+      id: '/_sidebar'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SidebarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +85,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_sidebar/settings': {
+      id: '/_sidebar/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SidebarSettingsRouteImport
+      parentRoute: typeof SidebarRoute
+    }
+    '/_sidebar/profile': {
+      id: '/_sidebar/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof SidebarProfileRouteImport
+      parentRoute: typeof SidebarRoute
+    }
   }
 }
 
+interface SidebarRouteChildren {
+  SidebarProfileRoute: typeof SidebarProfileRoute
+  SidebarSettingsRoute: typeof SidebarSettingsRoute
+}
+
+const SidebarRouteChildren: SidebarRouteChildren = {
+  SidebarProfileRoute: SidebarProfileRoute,
+  SidebarSettingsRoute: SidebarSettingsRoute,
+}
+
+const SidebarRouteWithChildren =
+  SidebarRoute._addFileChildren(SidebarRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SidebarRoute: SidebarRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
