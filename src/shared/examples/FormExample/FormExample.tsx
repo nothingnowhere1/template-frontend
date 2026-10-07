@@ -6,6 +6,7 @@ import {
     ControlledNumberTextField,
     ControlledPasswordTextField,
     ControlledPhoneTextField,
+    ControlledSelectField,
     ControlledTextField,
     ControlledTextareaField,
     Dropzone
@@ -33,6 +34,17 @@ export function FormExample() {
                 rows={4}
                 placeholder="Расскажите немного о себе"
                 description="От 10 до 1000 символов"
+            />
+            <ControlledSelectField
+                label="Роль"
+                control={control}
+                name="role"
+                placeholder="Выберите роль"
+                options={[
+                    { value: 'user', label: 'Пользователь' },
+                    { value: 'manager', label: 'Менеджер' },
+                    { value: 'admin', label: 'Администратор' },
+                ]}
             />
             <ControlledNumberTextField
                 label="Номер"
