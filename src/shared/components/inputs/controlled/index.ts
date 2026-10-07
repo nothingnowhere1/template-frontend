@@ -6,3 +6,4 @@ export * from './ControlledTextareaField';
 export * from './ControlledSelectField';
 export * from './ControlledCheckboxField';
 export * from './ControlledDateTimePicker';
+export * from './ControlledDatePicker';

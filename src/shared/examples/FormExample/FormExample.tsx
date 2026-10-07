@@ -3,6 +3,7 @@ import { useFormExample } from './useFormExample';
 import {
     Button,
     ControlledCheckboxField,
+    ControlledDatePicker,
     ControlledDateTimePicker,
     ControlledNumberTextField,
     ControlledPasswordTextField,
@@ -12,7 +13,6 @@ import {
     ControlledTextareaField,
     Dropzone
 } from '@/shared/components';
-import { ControlledDatePicker } from '@/shared/components/inputs/controlled/ControlledDatePicker';
 
 export function FormExample() {
     const { control, onSubmit } = useFormExample();
