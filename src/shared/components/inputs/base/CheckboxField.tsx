@@ -42,7 +42,14 @@ export function CheckboxField({
                 className={cn('mt-0.5', props.className)}
             />
             <FieldContent>
-                {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
+                {label && (
+                    <FieldLabel
+                        htmlFor={id}
+                        className="cursor-pointer group-data-[disabled=true]/field:cursor-not-allowed"
+                    >
+                        {label}
+                    </FieldLabel>
+                )}
                 {!!description && !error && (
                     <FieldDescription>{description}</FieldDescription>
                 )}
