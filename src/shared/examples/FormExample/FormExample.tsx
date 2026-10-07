@@ -7,6 +7,7 @@ import {
     ControlledPasswordTextField,
     ControlledPhoneTextField,
     ControlledTextField,
+    ControlledTextareaField,
     Dropzone
 } from '@/shared/components';
 import { ControlledDatePicker } from '@/shared/components/inputs/controlled/ControlledDatePicker';
@@ -24,6 +25,14 @@ export function FormExample() {
                 label="Имя"
                 control={control}
                 name="name"
+            />
+            <ControlledTextareaField
+                label="О себе"
+                control={control}
+                name="bio"
+                rows={4}
+                placeholder="Расскажите немного о себе"
+                description="От 10 до 1000 символов"
             />
             <ControlledNumberTextField
                 label="Номер"

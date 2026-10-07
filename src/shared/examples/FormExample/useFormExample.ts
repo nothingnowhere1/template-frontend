@@ -7,6 +7,7 @@ import { numberMinMaxSchema, phoneSchema, stringMinMaxSchema } from '@/shared/sc
 
 const zodSchema = z.object({
     name: stringMinMaxSchema({ min: 3, max: 255 }),
+    bio: stringMinMaxSchema({ min: 10, max: 1000 }),
     tel: phoneSchema,
     number: numberMinMaxSchema({ min: 1, max: 10, nullable: true }),
     password: stringMinMaxSchema({ min: 3, max: 255 }),
